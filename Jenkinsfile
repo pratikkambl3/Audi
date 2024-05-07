@@ -18,7 +18,7 @@ pipeline{
 
 		stage("Deployment"){
 			steps{
-				sh'cp target/Audi.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
+				sh'cp target/Audi.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
 					}
 				}
 		}
