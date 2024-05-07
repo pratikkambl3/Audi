@@ -37,15 +37,13 @@ fi'''
 
 		stage("Notification"){
 			steps{
-				slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#audi', color: 'good', failOnError: false, message: 'Build is Successful', teamDomain: 'DEVOPS', tokenCredentialId: '1f1b4282-1076-4885-8ad1-96e2282535b7', username: 'SIRI'
-				}
+				}slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#audi', color: 'good', failOnError: false, message: 'Build is SUCCESSFUL', teamDomain: 'DEVOPS', tokenCredentialId: 'Audi11', username: 'SIRI'
 				}
 
 		 stage("Failed-Notify"){
                         steps{
-                                slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#audi', color: 'danger', failOnError: true, message: 'Build is Failed', teamDomain: 'DEVOPS', tokenCredentialId: '1f1b4282-1076-4885-8ad1-96e2282535b7', username: 'SIRI'}
-                        }
-
+			slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#audi', color: 'danger', failOnError: true, message: 'Build is Failed', teamDomain: 'DEVOPS', tokenCredentialId: 'Audi11', username: 'SIRI'	
+			}
 		}
 
 
