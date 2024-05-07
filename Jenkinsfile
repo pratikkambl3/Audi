@@ -34,6 +34,12 @@ echo "Deployed to PROD SERVER"
 fi'''
 					}
 				}
+
+		stage("Notification"){
+			steps{
+				slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#audi', color: 'good', message: 'Build is successful', teamDomain: 'DEVOPS', tokenCredentialId: 'Audi', username: 'SIRI'
+				}
+				}
 		}
 
 
