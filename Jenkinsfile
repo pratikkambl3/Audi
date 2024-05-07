@@ -3,6 +3,10 @@ pipeline{
         triggers {
   pollSCM '* * * * *'
      }
+     parameters {
+  choice choices: ['QA', 'UAT', 'PROD'], name: 'ENV'
+}
+
     
    	stages{
 	 	stage("Checkout SCM"){
@@ -18,7 +22,16 @@ pipeline{
 
 		stage("Deployment"){
 			steps{
-				sh'cp target/Audi.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
+   			sh '''if [ $ENV = "QA" ];then
+cp target/Audi.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
+echo "Deployed to QA SERVER"
+elif [ $ENV = "UAT" ];then
+cp target/Audi.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
+echo "Deployed to UAT SERVER"
+elif [ $ENV = "PROD" ];then
+cp target/Audi.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
+echo "Deployed to PROD SERVER"
+fi'''
 					}
 				}
 		}
